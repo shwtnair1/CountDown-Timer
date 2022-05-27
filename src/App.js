@@ -7,6 +7,7 @@ function Solution() {
   });
   const [action, setAction] = useState("");
   const Ref = useRef(null);
+  useEffect(() => clearCountdown(), [time, clearCountdown]);
 
   function clearCountdown() {
     if (Ref.current) clearInterval(Ref.current);
@@ -22,8 +23,6 @@ function Solution() {
         : null;
     Ref.current = interval;
   }
-
-  useEffect(() => clearCountdown(), [time]);
 
   let mmInput = React.createRef();
   let ssInput = React.createRef();
