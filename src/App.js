@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, {
+  Fragment,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 
 function Solution() {
   const [time, setTime] = useState({
@@ -7,9 +13,8 @@ function Solution() {
   });
   const [action, setAction] = useState("");
   const Ref = useRef(null);
-  useEffect(() => clearCountdown(), [time]);
 
-  function clearCountdown() {
+  const clearCountdown = useCallback(() => {
     if (Ref.current) clearInterval(Ref.current);
     const interval =
       time.mm > 0 || time.ss > 0
@@ -22,8 +27,9 @@ function Solution() {
           }, 1000)
         : null;
     Ref.current = interval;
-    return interval;
-  }
+  }, []);
+
+  useEffect(() => clearCountdown(), [time, clearCountdown]);
 
   let mmInput = React.createRef();
   let ssInput = React.createRef();
