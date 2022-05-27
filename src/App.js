@@ -27,7 +27,7 @@ function Solution() {
           }, 1000)
         : null;
     Ref.current = interval;
-  }, []);
+  }, [time]);
 
   useEffect(() => clearCountdown(), [time, clearCountdown]);
 
@@ -60,6 +60,7 @@ function Solution() {
       }
     } else {
       setTime({ mm: 0, ss: 0 });
+      setAction("");
       mmInput.current.value = 0;
       ssInput.current.value = 0;
     }
