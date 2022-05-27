@@ -7,7 +7,7 @@ function Solution() {
   });
   const [action, setAction] = useState("");
   const Ref = useRef(null);
-  useEffect(() => clearCountdown(), [time, clearCountdown]);
+  useEffect(() => clearCountdown(), [time]);
 
   function clearCountdown() {
     if (Ref.current) clearInterval(Ref.current);
