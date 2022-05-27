@@ -22,6 +22,7 @@ function Solution() {
           }, 1000)
         : null;
     Ref.current = interval;
+    return interval;
   }
 
   let mmInput = React.createRef();
