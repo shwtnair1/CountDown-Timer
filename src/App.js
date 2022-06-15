@@ -15,10 +15,10 @@ function Solution() {
   const Ref = useRef(null);
 
   const clearCountdown = useCallback(() => {
-    if (Ref.current) clearInterval(Ref.current);
+    if (Ref.current) clearTimeout(Ref.current);
     const interval =
       time.mm > 0 || time.ss > 0
-        ? setInterval(() => {
+        ? setTimeout(() => {
             if (time.ss > 0) {
               setTime({ ...time, ss: time.ss - 1 });
             } else {
@@ -31,8 +31,8 @@ function Solution() {
 
   useEffect(() => clearCountdown(), [time, clearCountdown]);
 
-  let mmInput = React.createRef();
-  let ssInput = React.createRef();
+  let mmInput = useRef(null);
+  let ssInput = useRef(null);
   const formatTime = (data) => {
     let output = data < 10 ? "0" + data : data;
     return output;
